@@ -15,11 +15,11 @@ public class Interaction : MonoBehaviour
     public GameObject curInteractctGameObject;
     public IInteractable curInteractable;
     
-    private Camera camera;
+    private Camera cam;
     
     private void Start()
     {
-        camera = Camera.main;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class Interaction : MonoBehaviour
         {
             lastCheckTime = Time.time;
             
-            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
             
             //layerMask를 object로 설정, object 레이어가 붙어있는 
