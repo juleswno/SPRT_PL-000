@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public enum MonsterAIState
 {
@@ -21,15 +24,41 @@ public class MonsterAI : MonoBehaviour
     private MonsterAIState currentState = MonsterAIState.Patrol;
     private float repathTimer;
     private float currentPatrolWaitTimer = 0f;
-    
+
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        StartCoroutine(PlayerFound());
+
+    }
+
+    private void Init()
+    {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.Find("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+            else
+            {
+                Debug.Log("not found player");
+            }
+        }
+    }
+
+    private IEnumerator PlayerFound()
+    {
+        yield return new WaitForSeconds(3);
+        Init();
     }
 
     private void Update()
     {
+        if(player==null)return;
         
         float distance = Vector3.Distance(player.position, transform.position);
 
