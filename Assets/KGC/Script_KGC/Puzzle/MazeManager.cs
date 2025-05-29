@@ -1,10 +1,17 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MazeManager : MonoBehaviour
 {
    [SerializeField] private MazePatternData[] mazeData;
    
    private GameObject curMaze;
+
+   private void Start()
+   {
+      SpawnRandomMaze();
+   }
 
    public void SpawnRandomMaze()
    {

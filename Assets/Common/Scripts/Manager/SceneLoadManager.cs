@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
-    public static SceneLoadManager instance {get; private set;}
+    public static SceneLoadManager Instance {get; private set;}
 
     [Tooltip("Scene이름 등록"),Header("씬 이름 순서대로 등록")]
     
@@ -14,9 +14,9 @@ public class SceneLoadManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
