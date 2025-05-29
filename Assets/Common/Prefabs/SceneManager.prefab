@@ -47,4 +47,6 @@ MonoBehaviour:
   scenePathList:
   - Assets/Scenes/HYJ.unity
   - Assets/Scenes/KGC_SeceneManager.unity
+  - Assets/Scenes/KGIScene.unity
+  - Assets/Scenes/LBN.unity
   - Assets/Scenes/MainScene.unity
