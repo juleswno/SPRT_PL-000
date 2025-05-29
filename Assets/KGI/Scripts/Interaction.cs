@@ -41,7 +41,8 @@ public class Interaction : MonoBehaviour
                 {
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>(); 
-                    curInteractable.FloatScript(true); 
+                    curEquipObject = hit.collider.GetComponent<EquipObject>();
+                    curInteractable?.FloatScript(true); 
                 }
 
                 if (hit.collider.gameObject.CompareTag("Item"))
@@ -62,13 +63,13 @@ public class Interaction : MonoBehaviour
         }
     }
 
+    //Inspecter창에서 event와 연결
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && curInteractable != null && isItem)
+        if (context.phase == InputActionPhase.Started && curInteractGameObject != null && isItem)
         {
-            curEquipObject = curInteractGameObject.GetComponent<EquipObject>();
             curEquipObject.OnEquip();
-            curInteractable.FloatScript(false);
+            curInteractable?.FloatScript(false);
             curInteractGameObject = null;
             curInteractable = null;
         }

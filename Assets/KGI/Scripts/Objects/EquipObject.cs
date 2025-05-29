@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class EquipObject : MonoBehaviour
 {
-    public GameObject EquipPrefab;
-    private GameObject currentInstance;
     public Transform equipParent;
     public Transform unEquipParent;
+
+    private Transform originalParent;
+    private Vector3 originLocalPos;
+    private Quaternion originLocalRot;
 
     public Rigidbody rb;
     private float delay = 1f;
@@ -20,28 +22,24 @@ public class EquipObject : MonoBehaviour
     //새로 장착 (E)
     public void OnEquip()
     {
+        //원래의 위치 백업
+        originalParent = transform.parent;
+        originLocalPos = transform.localPosition;
+        originLocalRot = transform.localRotation;
+        
         rb.useGravity = false;
-        if (currentInstance != null)
-            return;
-        currentInstance = Instantiate(EquipPrefab, equipParent);
+        transform.SetParent(equipParent, false);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(17f, 0f, 19f);
     }
 
     //장착 해제 (Q)
     public void OnUnequip()
     {
-        if (currentInstance == null)
-            return;
-    
         rb.useGravity = true;
-        currentInstance.transform.SetParent(unEquipParent);
-        EquipPrefab = null;
-        StartCoroutine(DelayAction(() => rb.useGravity = false, delay));
-    }
 
-    private IEnumerator DelayAction(Action action, float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        action();
+        transform.SetParent(unEquipParent ? unEquipParent : originalParent);
+        transform.localPosition = originLocalPos;
+        transform.localRotation = originLocalRot;
     }
-
 }
