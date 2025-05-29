@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd530d3f21bcb564199bad7c33419abc, type: 3}
-  m_Name: FirstMaze 1
+  m_Name: ThirdMaze
   m_EditorClassIdentifier: 
-  mazeId: 0
-  mazePatternPrefab: {fileID: 9216874255714377966, guid: ffaf0d7efa8e52b44abbaa99e2e91e56, type: 3}
-  description: "\uCCAB\uBC88\uC9F8 \uB9F5"
+  mazeId: 2
+  mazePatternPrefab: {fileID: 386360737071322228, guid: 53619abedca2bfd4ab0bd8219b642db4, type: 3}
+  description: "\uC138\uBC88\uC9F8 \uB9F5 \uB09C\uC774\uB3C4: \u2605\u2605\u2605\u2605"
   startPos: {x: 0, y: 0, z: 19}
   endPos: {x: 0, y: 0, z: 0}
