@@ -56,5 +56,4 @@ public class IceCube : MonoBehaviour
             Instantiate(key, transform.position, transform.rotation);
         }
     }
-    
 }
