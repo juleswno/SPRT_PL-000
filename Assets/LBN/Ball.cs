@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public GameObject ballPrefab;       // 생성할 공 프리팹
-    public int numberOfBalls = 10;       // 생성할 공 개수
-    public Vector3 startPosition = Vector3.zero;  // 시작 위치
-    public float spacing = 2.0f;        // 공 간의 간격
+    public GameObject ballPrefab;   
+    public int numberOfBalls;       
+    public Vector3 startPosition = Vector3.zero;  
+    public float spacing;        
 
     void Start()
     {
