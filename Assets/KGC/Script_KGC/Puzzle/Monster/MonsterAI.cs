@@ -81,7 +81,7 @@ public class MonsterAI : MonoBehaviour
             return;
         }
 
-        if (!agent.pathPending && agent.remainingDistance <= _distanceToPlayer)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             if (!isWaiting)
             {

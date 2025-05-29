@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstMaze
   m_EditorClassIdentifier: 
   mazeId: 0
-  mazePatternPrefab: {fileID: 386360737071322228, guid: 53619abedca2bfd4ab0bd8219b642db4, type: 3}
-  description: "\uCCAB\uBC88\uC9F8 \uB9F5"
+  mazePatternPrefab: {fileID: 9216874255714377966, guid: ffaf0d7efa8e52b44abbaa99e2e91e56, type: 3}
+  description: "\uCCAB\uBC88\uC9F8 \uB9F5 \uB09C\uC774\uB3C4: \u2605"
   startPos: {x: 0, y: 0, z: 19}
   endPos: {x: 0, y: 0, z: 0}
