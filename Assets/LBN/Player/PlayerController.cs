@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     private Rigidbody rigidbody;
-    private Player player; // Player ½ºÅ©¸³Æ® ÂüÁ¶
+    private Player player; // Player ìŠ¤í¬ë¦½íŠ¸ ì°¸ì¡°
 
     [Header("Movement")]
     private Vector2 curMovementInput;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        player = GetComponent<Player>(); // Player ½ºÅ©¸³Æ® °¡Á®¿À±â
+        player = GetComponent<Player>(); // Player ìŠ¤í¬ë¦½íŠ¸ ê°€ì ¸ì˜¤ê¸°
     }
 
     void Start()
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= player.moveSpeed; // Player ½ºÅ©¸³Æ®ÀÇ ¼Óµµ »ç¿ë
+        dir *= player.moveSpeed; // Player ìŠ¤í¬ë¦½íŠ¸ì˜ ì†ë„ ì‚¬ìš©
         dir.y = rigidbody.velocity.y;
 
         rigidbody.velocity = dir;
