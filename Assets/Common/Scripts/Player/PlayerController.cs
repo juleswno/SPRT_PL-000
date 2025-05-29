@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Look")]
     public Transform cameraContainer;
-    public float minXLook = -60f;
-    public float maxXLook = 60f;
+    public float minXLook;
+    public float maxXLook;
     private float camCurXRot;
-    public float lookSensitivity = 1.5f;
+    public float lookSensitivity;
 
     private Vector2 mouseDelta;
 
