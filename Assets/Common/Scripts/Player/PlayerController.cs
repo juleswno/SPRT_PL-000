@@ -89,5 +89,12 @@ namespace Common.Scripts.Player
             Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
             canLook = !toggle;
         }
+
+        
+        [ContextMenu("MouseLockToggle")]
+        public void ToggleCursorLock()
+        {
+            ToggleCursor(true);
+        }
     }
 }
