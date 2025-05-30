@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Common.Scripts.Player
 {
-    public float moveSpeed = 5f;
+    public class Player : MonoBehaviour
+    {
+        public float moveSpeed = 5f;
+    }
 }
 
