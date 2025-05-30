@@ -9,8 +9,8 @@ public class QuizTextInputUI : MonoBehaviour
     public UnityEngine.UI.Button submitButton;
     public GameObject slotPrefab;
     public Transform slotParent;
+    [Header("최대 다섯글자")]
     public string correctAnswer;
-        
     private GameObject[] slots;
 
     private void Start()
