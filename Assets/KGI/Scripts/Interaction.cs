@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class Interaction : MonoBehaviour
     public float maxCheckDistance = 5;
     public LayerMask layerMask;
     
-    public GameObject curInteractctGameObject;
+    public GameObject curInteractGameObject;
     public IInteractable curInteractable;
-    
+
+    private EquipObject curEquipObject;
     private Camera cam;
+    private bool isItem;
     
     private void Start()
     {
@@ -31,15 +34,19 @@ public class Interaction : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
             
-            //layerMask를 object로 설정, object 레이어가 붙어있는 
+            //layerMask를 object로 설정, object 레이어가 붙어있는 오브젝트에 반응
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
-                if (hit.collider.gameObject != curInteractctGameObject)
+                if (hit.collider.gameObject != curInteractGameObject)
                 {
-                    curInteractctGameObject = hit.collider.gameObject;
+                    curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>(); 
-                    curInteractable.FloatScript(true); 
+                    curEquipObject = hit.collider.GetComponent<EquipObject>();
+                    curInteractable?.FloatScript(true); 
                 }
+
+                if (hit.collider.gameObject.CompareTag("Item"))
+                    isItem = true;
             }
             else
             {
@@ -47,9 +54,33 @@ public class Interaction : MonoBehaviour
                 {
                     curInteractable.FloatScript(false);
                 }
-                curInteractctGameObject = null;
+                curInteractGameObject = null;
                 curInteractable = null;
+                isItem = false;
             }
+            
+            UnInteractInput();
+        }
+    }
+
+    //Inspecter창에서 event와 연결
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started && curInteractGameObject != null && isItem)
+        {
+            curEquipObject.OnEquip();
+            curInteractable?.FloatScript(false);
+            curInteractGameObject = null;
+            curInteractable = null;
+        }
+    }
+
+    //작동이 잘 되는지 확인 후 InputSystem으로 옮기기
+    public void UnInteractInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && curEquipObject != null)
+        {
+            curEquipObject.OnUnequip();
         }
     }
 }
