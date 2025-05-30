@@ -47,9 +47,9 @@ public class QuizTextInputUI : MonoBehaviour
             for (int i = 0; i < correctAnswer.Length; i++)
             {
                 slots[i].GetComponentInChildren<TMP_Text>().text = "_";
+                
             }
         }
-        
-        
+        inputField.text = String.Empty;
     }
 }
