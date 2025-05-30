@@ -2597,7 +2597,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1996000607366447718, guid: b9235ad1d6730fa468e69b3734f101ba, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -230
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2086746843588235836, guid: b9235ad1d6730fa468e69b3734f101ba, type: 3}
       propertyPath: m_Name
@@ -2605,7 +2605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2086746843588235836, guid: b9235ad1d6730fa468e69b3734f101ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3842689224401469606, guid: b9235ad1d6730fa468e69b3734f101ba, type: 3}
       propertyPath: dialogueDatas.Array.size

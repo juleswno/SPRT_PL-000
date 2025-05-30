@@ -1,18 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialoguePlayer : MonoBehaviour
 {
-    public DialogueData[] dialogueDatas; //´ëÈ­ µ¥ÀÌÅÍ
-    public Text dialogueText; //´ëÈ­¸¦ ¹İ¿µÇÏ´Â Text
-    public float typingSpeed = 0.05f; //Å¸ÀÌÇÎ ¼Óµµ
+    public DialogueData[] dialogueDatas; //ëŒ€í™” ë°ì´í„°
+    public Text dialogueText; //ëŒ€í™”ë¥¼ ë°˜ì˜í•˜ëŠ” Text
+    public float typingSpeed = 0.05f; //íƒ€ì´í•‘ ì†ë„
 
-    public float delayBetweenLines = 1.0f; //´ÙÀ½ ´ë»ç
-    private int currentDetalndex = 0; //ÇöÀç ´ëÈ­ ÁÙ
+    public float delayBetweenLines = 1.0f; //ë‹¤ìŒ ëŒ€ì‚¬
+    private int currentDetalndex = 0; //í˜„ì¬ ëŒ€í™” ì¤„
     private int currentLine = 0; //
-    private Coroutine typingCoroutine; //Å¸ÀÌÇÎ ÄÚ·çÆ¾
+    private Coroutine typingCoroutine; //íƒ€ì´í•‘ ì½”ë£¨í‹´
 
     private void Start()
     {
@@ -43,19 +43,19 @@ public class DialoguePlayer : MonoBehaviour
             typingCoroutine = StartCoroutine(TypeLine(data.lines[currentLine]));
             currentLine++;
         }
-        //´ëÈ­°¡ ³¡³­ ½ÃÁ¡
+        //ëŒ€í™”ê°€ ëë‚œ ì‹œì 
         else
         {
             dialogueText.text = "";
-            Debug.Log("´ëÈ­ Á¾·á!");
+            Debug.Log("ëŒ€í™” ì¢…ë£Œ!");
         }
     }
 
-    //ÇÑ±ÛÀÚ¾¿ ³ª¿À´Â È¿°ú
+    //í•œê¸€ìì”© ë‚˜ì˜¤ëŠ” íš¨ê³¼
     IEnumerator TypeLine(string line)
     {
         dialogueText.text = "";
-        //ÇÑ±ÛÀÚ¾¿ »©¿Â´Ù
+        //í•œê¸€ìì”© ë¹¼ì˜¨ë‹¤
         foreach (char letter in line)
         {
             dialogueText.text += letter;

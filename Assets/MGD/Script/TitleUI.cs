@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class TitleUI : MonoBehaviour
 {
 
-    //°ÔÀÓ ½ÃÀÛ
-    //ºÒ·¯¿À±â
-    //¼³Á¤
-    //°ÔÀÓ Á¾·á
+    //ê²Œì„ ì‹œì‘
+    //ë¶ˆëŸ¬ì˜¤ê¸°
+    //ì„¤ì •
+    //ê²Œì„ ì¢…ë£Œ
 
     [SerializeField]
     private GameObject settingPannel;
@@ -32,7 +32,7 @@ public class TitleUI : MonoBehaviour
 
     public void GameLoad()
     {
-        //ÀúÀå µ¥ÀÌÅÍ ±¸ÇöµÈ ÈÄ
+        //ì €ì¥ ë°ì´í„° êµ¬í˜„ëœ í›„
     }
     
     void Start()

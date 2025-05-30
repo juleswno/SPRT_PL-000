@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,9 +37,9 @@ public class MainAudioManager : MonoBehaviour
         sfxaduioSource.volume = sfxSlider.value;
     }
 
-    //È¿°úÀ½ È£ÃâÇÒ¶§ ÇÔ¼ö È£Ãâ
+    //íš¨ê³¼ìŒ í˜¸ì¶œí• ë•Œ í•¨ìˆ˜ í˜¸ì¶œ
     //MainAudioManager.Instance.PlaySfx()
-    //°¢ »ç¹°¸¶´Ù ¿Àµğ¿À Å¬¸³
+    //ê° ì‚¬ë¬¼ë§ˆë‹¤ ì˜¤ë””ì˜¤ í´ë¦½
     public void PlaySfx(AudioClip clip)
     {
         sfxaduioSource.clip = clip;
