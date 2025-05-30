@@ -8,10 +8,13 @@ public class QuizTextInputUI : MonoBehaviour
     public TMP_InputField inputField;
     public UnityEngine.UI.Button submitButton;
     public GameObject slotPrefab;
+    
     public Transform slotParent;
     [Header("최대 다섯글자")]
     public string correctAnswer;
     private GameObject[] slots;
+
+    public event Action OnCorrect;
 
     private void Start()
     {
@@ -41,6 +44,8 @@ public class QuizTextInputUI : MonoBehaviour
             {
                 slots[i].GetComponentInChildren<TMP_Text>().text = correctAnswer[i].ToString().ToLower();
             }
+
+            OnCorrectAnswer();
         }
         else
         {
@@ -51,5 +56,11 @@ public class QuizTextInputUI : MonoBehaviour
             }
         }
         inputField.text = String.Empty;
+    }
+
+    void OnCorrectAnswer()
+    {
+        Debug.Log("정답!!");
+        OnCorrect?.Invoke();
     }
 }

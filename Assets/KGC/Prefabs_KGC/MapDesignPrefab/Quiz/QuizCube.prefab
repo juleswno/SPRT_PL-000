@@ -330,6 +330,8 @@ GameObject:
   - component: {fileID: 6176268294340417973}
   - component: {fileID: 5770126601132893356}
   - component: {fileID: 4527606395384797913}
+  - component: {fileID: 611501616212558295}
+  - component: {fileID: 5669522372066876237}
   m_Layer: 7
   m_Name: QuizCube
   m_TagString: Item
@@ -807,7 +809,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3887
+  m_VersionIndex: 3899
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -925,3 +927,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8975359978223539873}
   m_Mesh: {fileID: 0}
+--- !u!114 &611501616212558295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975359978223539873}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 7.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &5669522372066876237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975359978223539873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490b6212151a2d04bb214223bcf1e004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quizTextInputUI: {fileID: 0}
+  quizPanel: {fileID: 0}
