@@ -47,11 +47,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        [ContextMenu("MouseLockToggle")]
-        public void ToggleCursorLock()
-        {
-            ToggleCursor(true);
-        }
+
     }
 
     public void OnLookInput(InputAction.CallbackContext context)
@@ -93,5 +89,11 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+    
+    [ContextMenu("MouseLockToggle")]
+    public void ToggleCursorLock()
+    {
+        ToggleCursor(true);
     }
 }
