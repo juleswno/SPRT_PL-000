@@ -325,13 +325,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1071279898583880024}
   - component: {fileID: 6416615037255880831}
-  - component: {fileID: 6176268294340417973}
-  - component: {fileID: 7148998818411331197}
-  - component: {fileID: 4527606395384797913}
   - component: {fileID: 7931216746040813554}
-  m_Layer: 0
+  - component: {fileID: 7148998818411331197}
+  - component: {fileID: 6176268294340417973}
+  - component: {fileID: 5770126601132893356}
+  - component: {fileID: 4527606395384797913}
+  m_Layer: 7
   m_Name: QuizCube
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,39 +807,33 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3878
+  m_VersionIndex: 3887
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &6176268294340417973
-MonoBehaviour:
+--- !u!64 &7931216746040813554
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8975359978223539873}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Shape:
-    rid: 5317355461474779158
-  m_Size: {x: 1.9951229, y: 2.01259, z: -2.00354}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 2111
-  m_ShapeBox:
-    m_Center: {x: 0.99756145, y: 1.006295, z: -1.00177}
-    m_Extent: {x: 0.99756145, y: 1.006295, z: 1.00177}
-  references:
-    version: 2
-    RefIds:
-    - rid: 5317355461474779158
-      type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
-      data: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!23 &7148998818411331197
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -881,6 +876,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6176268294340417973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975359978223539873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Shape:
+    rid: 5317355461474779158
+  m_Size: {x: 1.9951229, y: 2.01259, z: -2.00354}
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  m_PivotLocation: 1
+  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_UnmodifiedMeshVersion: 2111
+  m_ShapeBox:
+    m_Center: {x: 0.99756145, y: 1.006295, z: -1.00177}
+    m_Extent: {x: 0.99756145, y: 1.006295, z: 1.00177}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5317355461474779158
+      type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+      data: 
+--- !u!114 &5770126601132893356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975359978223539873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682b0c8a9b0f9204f8e603d6f8de3158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discription: {fileID: 0}
 --- !u!33 &4527606395384797913
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -888,26 +924,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8975359978223539873}
-  m_Mesh: {fileID: 0}
---- !u!64 &7931216746040813554
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8975359978223539873}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
