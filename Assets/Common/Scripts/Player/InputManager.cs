@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+namespace Common.Scripts.Player
 {
-    private Vector2 movementInput;
-    public Vector2 MovementInput => movementInput;
-
-    public void OnMove(InputAction.CallbackContext context)
+    public class InputManager : MonoBehaviour
     {
-        movementInput = context.ReadValue<Vector2>();
+        private Vector2 movementInput;
+        public Vector2 MovementInput => movementInput;
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            movementInput = context.ReadValue<Vector2>();
+        }
     }
 }
 
