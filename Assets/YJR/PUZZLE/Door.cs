@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
 
     public float slideDistance = 1.5f;
     public float slideSpeed = 2f;
+    public Vector3 slideDirection = Vector3.left;
+
 
     private Vector3 leftClosedPos;
     private Vector3 rightClosedPos;
@@ -23,8 +25,8 @@ public class Door : MonoBehaviour
         leftClosedPos = leftdoor.localPosition;
         rightClosedPos = rightdoor.localPosition;
 
-        leftOpenPos = leftClosedPos + Vector3.left * slideDistance;
-        rightOpenPos = rightClosedPos + Vector3.right * slideDistance; 
+        leftOpenPos = leftClosedPos + slideDirection.normalized * slideDistance;
+        rightOpenPos = rightClosedPos - slideDirection.normalized * slideDistance;
 
     }
 
