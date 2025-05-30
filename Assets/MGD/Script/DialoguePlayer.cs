@@ -5,54 +5,66 @@ using UnityEngine.UI;
 
 public class DialoguePlayer : MonoBehaviour
 {
+    public DialogueData[] dialogueDatas; //대화 데이터
+    public Text dialogueText; //대화를 반영하는 Text
+    public float typingSpeed = 0.05f; //타이핑 속도
 
-    public DialogueData dialogueData;
-    public Text dialogueText;
-    public float typingSpeed = 0.08f;
+    public float delayBetweenLines = 1.0f; //다음 대사
+    private int currentDetalndex = 0; //현재 대화 줄
+    private int currentLine = 0; //
+    private Coroutine typingCoroutine; //타이핑 코루틴
 
-    private int cuurentLine = 0;
-    private Coroutine typingCoroutine;
-
-    [SerializeField]
-    private GameObject MainUI;
-
-    void Start()
+    private void Start()
     {
+        ShowDialogue(0);
+    }
+
+    private void ShowDialogue(int index)
+    {
+        if (index < 0 || index >= dialogueDatas.Length)
+        {
+            return;
+        }
+
+        currentDetalndex = index;
+        currentLine = 0;
         ShowNextLine();
     }
 
-    public void ShowNextLine()
+    private void ShowNextLine()
     {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
-        if(cuurentLine< dialogueData.lines.Length)
+
+        DialogueData data = dialogueDatas[currentDetalndex];
+
+        if (currentLine < data.lines.Length)
         {
-            typingCoroutine = StartCoroutine(TypeLine(dialogueData.lines[cuurentLine]));
-            cuurentLine++;
+            typingCoroutine = StartCoroutine(TypeLine(data.lines[currentLine]));
+            currentLine++;
         }
+        //대화가 끝난 시점
         else
         {
-            //대사가 다 끝난 구간
             dialogueText.text = "";
+            Debug.Log("대화 종료!");
         }
-
-        
     }
 
-    private IEnumerator TypeLine(string line)
+    //한글자씩 나오는 효과
+    IEnumerator TypeLine(string line)
     {
         dialogueText.text = "";
-
-        //들어온 대사를 한글자 반영한다
-        foreach (char letter in line.ToCharArray())
+        //한글자씩 빼온다
+        foreach (char letter in line)
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
 
-        yield return new WaitForSeconds(2);
-        this.gameObject.SetActive(false);
-        MainUI.SetActive(true);
+        yield return new WaitForSeconds(delayBetweenLines);
+
+        ShowNextLine();
     }
 
 }

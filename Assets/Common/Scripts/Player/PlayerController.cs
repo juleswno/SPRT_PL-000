@@ -47,13 +47,14 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        [ContextMenu("MouseLockToggle")]
-        public void ToggleCursorLock()
-        {
-            ToggleCursor(true);
-        }
+        
     }
 
+    [ContextMenu("MouseLockToggle")]
+    public void ToggleCursorLock()
+    {
+        ToggleCursor(true);
+    }
     public void OnLookInput(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
