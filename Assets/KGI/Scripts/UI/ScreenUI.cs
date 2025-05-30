@@ -25,14 +25,21 @@ public class ScreenUI : MonoBehaviour
     private void Start()
     {
         curTemperature = 35;
-        if (this.gameObject.activeSelf)
-        {
-            isActiveScreen = true;
-        }
+        
     }
 
     private void Update()
     {
+        //화면 켜졌는지 여부 검사하기
+        if (this.gameObject.activeSelf)
+        {
+            isActiveScreen = true;
+        }
+        else
+        {
+            isActiveScreen = false;
+        }
+        
         ChangeTemperatureText();
         ChangeTimeText();
         
@@ -51,6 +58,8 @@ public class ScreenUI : MonoBehaviour
         {
             Optionselect(currentIndex);
         }
+        
+        
     }
     
     //시간에 따라 방 온도를 바꾸는 메서드
@@ -69,6 +78,7 @@ public class ScreenUI : MonoBehaviour
         curTimeTxt.text = $"{minutes:00}:{seconds:00}";
     }
 
+    //selectBox의 위치 조정
     private void MoveSelector(int direction)
     {
         int count = optionText.Length;
@@ -76,6 +86,7 @@ public class ScreenUI : MonoBehaviour
         UpdateSelectorPosition();
     }
     
+    //selectbox의 실제 위치값 변경
     private void UpdateSelectorPosition()
     {
         selector.anchoredPosition = optionText[currentIndex].anchoredPosition;
