@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipObject : MonoBehaviour
@@ -28,16 +25,18 @@ public class EquipObject : MonoBehaviour
         originLocalRot = transform.localRotation;
         
         rb.useGravity = false;
+        rb.isKinematic = true;
         transform.SetParent(equipParent, false);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.Euler(17f, 0f, 19f);
+        transform.localPosition = new Vector3(1f, 1f, 1f);
+        //transform.localRotation = Quaternion.Euler(17f, 0f, 19f);
     }
 
     //장착 해제 (Q)
     public void OnUnequip()
     {
         rb.useGravity = true;
-
+        rb.isKinematic = false;
+        
         transform.SetParent(unEquipParent ? unEquipParent : originalParent);
         transform.localPosition = originLocalPos;
         transform.localRotation = originLocalRot;
