@@ -7,6 +7,7 @@ using UnityEngine;
 public class ScreenUI : MonoBehaviour
 {
     //변수
+    public InitScreen initScreen;
     public TextMeshProUGUI curTemTxt;
     public TextMeshProUGUI curTimeTxt;
     
@@ -102,8 +103,10 @@ public class ScreenUI : MonoBehaviour
                 //스크린을 초기화하는 클래스 따로 만들기
                 //스크린 초기화 -> 다음 스크린으로 넘어가는 클래스
                 //스크린별 순서 관리하는 클래스
+                initScreen.InitDiscription(1);
                 break;
             case 1:
+                initScreen.InitDiscription(4);
                 break;
             case 2:
                 break;
