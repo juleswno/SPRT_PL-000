@@ -100,6 +100,8 @@ public class ScreenUI : MonoBehaviour
         {
             case 0:
                 //스크린을 초기화하는 클래스 따로 만들기
+                //스크린 초기화 -> 다음 스크린으로 넘어가는 클래스
+                //스크린별 순서 관리하는 클래스
                 break;
             case 1:
                 break;
