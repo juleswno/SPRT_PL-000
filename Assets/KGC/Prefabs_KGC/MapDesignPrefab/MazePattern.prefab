@@ -7010,6 +7010,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6271417772422910477, guid: 4eb7de3426c43fe47b4cef95f3b50588, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6541176894189531697, guid: 4eb7de3426c43fe47b4cef95f3b50588, type: 3}
       propertyPath: m_Name
       value: Monster
