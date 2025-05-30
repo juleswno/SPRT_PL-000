@@ -10,7 +10,6 @@ public class EquipObject : MonoBehaviour
     private Quaternion originLocalRot;
 
     public Rigidbody rb;
-    private float delay = 1f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,7 +26,7 @@ public class EquipObject : MonoBehaviour
         rb.useGravity = false;
         rb.isKinematic = true;
         transform.SetParent(equipParent, false);
-        transform.localPosition = new Vector3(1f, 1f, 1f);
+        transform.localPosition = new Vector3(0.7f, 0.5f, 1f);
         //transform.localRotation = Quaternion.Euler(17f, 0f, 19f);
     }
 
