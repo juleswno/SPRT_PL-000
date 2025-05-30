@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +15,7 @@ public class Interaction : MonoBehaviour
     public IInteractable curInteractable;
 
     private EquipObject curEquipObject;
+    private CubeObject curCubeObject;
     private Camera cam;
     private bool isItem;
     
@@ -47,6 +46,11 @@ public class Interaction : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("Item"))
                     isItem = true;
+                
+                curCubeObject = hit.collider.GetComponent<CubeObject>();
+                if (curCubeObject != null)
+                    curCubeObject.isRayOn = true;
+
             }
             else
             {
