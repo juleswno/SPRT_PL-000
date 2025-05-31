@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PuzzleSlot[] slots;
+    public GameObject door;
+
+    public void CheckAllSlots()
     {
-        
+        foreach (var slot in slots)
+        {
+            if (!slot.IsCorrect)
+                return;
+        }
+
+        OpenDoor();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OpenDoor()
     {
-        
+        door.SetActive(false); // ¹® ¿­¸²
     }
 }
