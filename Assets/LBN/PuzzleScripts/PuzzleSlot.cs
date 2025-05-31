@@ -10,8 +10,9 @@ public class PuzzleSlot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
+        if (other.CompareTag("ball "))
         {
+            Debug.Log("Á¤´ä");
             ItemData item = other.GetComponent<ItemData>();
             if (item != null && item.itemType == requiredType)
             {
