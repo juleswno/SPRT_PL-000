@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/KGIScene.unity
+    guid: 1d937e8bf3e1f214ab972116e1fa1a89
+  - enabled: 1
+    path: Assets/Scenes/KGC_SeceneManager.unity
+    guid: fc271024049b14b4984d5315451a21e5
+  - enabled: 1
+    path: Assets/Scenes/LBN.unity
+    guid: ddf3b81d6ce55474db5e46d1f6bfc0af
   m_configObjects: {}

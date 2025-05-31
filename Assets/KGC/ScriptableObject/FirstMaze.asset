@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd530d3f21bcb564199bad7c33419abc, type: 3}
+  m_Name: FirstMaze
+  m_EditorClassIdentifier: 
+  mazeId: 0
+  mazePatternPrefab: {fileID: 9216874255714377966, guid: ffaf0d7efa8e52b44abbaa99e2e91e56, type: 3}
+  description: "\uCCAB\uBC88\uC9F8 \uB9F5 \uB09C\uC774\uB3C4: \u2605"
+  startPos: {x: 0, y: 0, z: 19}
+  endPos: {x: 0, y: 0, z: 0}
