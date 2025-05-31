@@ -146,6 +146,9 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
         player?.UnlockInput();
         interaction?.UnlockInteraction();
         interaction?.ClearInteraction();
+        
+        yield return new WaitForSeconds(2f);
+        FindObjectOfType<RedFlash>()?.StartFlash();
         UIClose();
 
     }
