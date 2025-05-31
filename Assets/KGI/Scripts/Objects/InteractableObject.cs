@@ -28,7 +28,6 @@ public class InteractableObject : MonoBehaviour, IInteractable
             if (puzzleUI != null)
             {
                 puzzleUI.UIOpen();
-                puzzleUI.OnCorrect +=() => puzzleUI.UIClose();
             }
             else
             {

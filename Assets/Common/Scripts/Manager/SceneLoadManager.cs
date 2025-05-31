@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -36,10 +37,11 @@ public class SceneLoadManager : MonoBehaviour
         foreach (string scenePath in scenePaths)
         {
             string path = AssetDatabase.GUIDToAssetPath(scenePath);
+            SceneAsset sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(path);
 
-            if (!scenePathList.Contains(path))
+            if (sceneAsset!=null && !scenePathList.Contains(sceneAsset.name))
             {
-                scenePathList.Add(path);
+                scenePathList.Add(sceneAsset.name);
             }
         }
         EditorUtility.SetDirty(this);
@@ -64,10 +66,17 @@ public class SceneLoadManager : MonoBehaviour
         if (index >= 0 && index < scenePathList.Count - 1)
         {
             LoadSceneByIndex(index + 1);
+            StartCoroutine(DelayedLightFix());
         }
         else
         {
             Debug.Log("마지막 씬입니다.");
         }
+    }
+    
+    private IEnumerator DelayedLightFix()
+    {
+        yield return null; // 1프레임 대기
+        DynamicGI.UpdateEnvironment(); // 조명 업데이트
     }
 }

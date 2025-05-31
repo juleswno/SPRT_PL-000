@@ -32,7 +32,6 @@ public class MonsterController : MonoBehaviour
 
     private Coroutine patrolSoundCoroutine;
 
-
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();

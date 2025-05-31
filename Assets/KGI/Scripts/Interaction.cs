@@ -19,7 +19,7 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     
     private bool isItem;
-    private bool isInteraction= false;
+    private bool isInteraction= true;
     
     private Outline curOutline;
     
@@ -30,7 +30,8 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
-        if(isInteraction)return;
+        if(!isInteraction)
+            return;
         
         if (Time.time - lastCheckTime > checkRate)
         {

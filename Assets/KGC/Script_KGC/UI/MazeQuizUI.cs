@@ -17,10 +17,10 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
     public string correctAnswer;
 
     [Header("정답 애니메이션 연출 설정")]
-    public Transform cutsceneLookTarget;
+    public CanvasGroup canvasGroup;
+    public GameObject cutsceneLookTarget;
     public float cutsceneWaitDuration; //카메라 이동 후 지속시간
     public float cutsceneMoveDuration; //카메라가 이동하는 속도
-    
     
     private GameObject[] slots;
 
@@ -90,6 +90,16 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
         inputField.text = String.Empty;
     }
 
+    void HideUI()
+    {
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+    }
+
     void OnCorrectAnswer()
     {
         Debug.Log("정답!!");
@@ -105,24 +115,24 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
         var playerController = FindObjectOfType<PlayerController>();
         playerController?.LockInput();
 
-
+        HideUI();
         StartCoroutine(PlayCutSceneAnim());
     }
 
     private IEnumerator PlayCutSceneAnim()
     {
-        Transform cam =Camera.main.transform;
+        Transform cam = Camera.main.transform;
         
         Vector3 startPos = cam.position;
         Quaternion startRot = cam.rotation;
 
-        Vector3 targetPos = cutsceneLookTarget.position + cutsceneLookTarget.forward * -2f + Vector3.up * 1.5f;
-        Quaternion targetRot = Quaternion.LookRotation(cutsceneLookTarget.position - targetPos);
+        cutsceneLookTarget= GameObject.Find("ExitTargetWall");
+        
+        Vector3 targetPos = cutsceneLookTarget.transform.position + Vector3.up * 10f;
+        Quaternion targetRot = Quaternion.LookRotation(cutsceneLookTarget.transform.position - targetPos);
         
         yield return StartCoroutine(MoveCameraToTarget(cam,targetPos,targetRot, cutsceneMoveDuration));
-        
         yield return new WaitForSeconds(cutsceneWaitDuration);
-        
         yield return StartCoroutine(MoveCameraToTarget(cam,startPos,startRot, cutsceneMoveDuration));
         
         var player = FindObjectOfType<PlayerController>();
@@ -130,6 +140,8 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
 
         player?.UnlockInput();
         interaction?.UnlockInteraction();
+        interaction?.ClearInteraction();
+        UIClose();
 
     }
 
