@@ -76,7 +76,7 @@ public class ScreenUI : MonoBehaviour
         curTemperature -= Time.deltaTime * temperatureScale;
         curTemTxt.text = $"{(int)curTemperature}도";
         
-        if (curTemperature < -60)
+        if (curTemperature < -40)
         {
             Debug.Log("죽었다!");
             //게임 오버 코드 불러오기
