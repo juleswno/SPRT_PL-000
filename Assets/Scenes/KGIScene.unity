@@ -1872,6 +1872,10 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 9183227867267350383, guid: 6310aabac1b73bf47b82c1f7a1e6eb0f, type: 3}
+      propertyPath: cubeObject
+      value: 
+      objectReference: {fileID: 2882390764570048723}
+    - target: {fileID: 9183227867267350383, guid: 6310aabac1b73bf47b82c1f7a1e6eb0f, type: 3}
       propertyPath: initScreen
       value: 
       objectReference: {fileID: 2096751102}

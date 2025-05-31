@@ -8,9 +8,18 @@ public class InitScreen : MonoBehaviour
     
     [SerializeField] private GameObject[] discription;
     
-    public void InitDiscription(int directionIndex)
+    //discription 선택하기
+    public void SelectDiscription(int directionIndex)
     {
         discription[directionIndex-1].SetActive(false);
         discription[directionIndex].SetActive(true);
     }
+
+    //종료할 때 스크린 초기화
+    public void InitDiscription(int curdirectionIndex)
+    {
+        discription[curdirectionIndex].SetActive(false);
+        discription[0].SetActive(true);
+    }
+    
 }
