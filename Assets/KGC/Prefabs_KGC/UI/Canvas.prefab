@@ -501,6 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1594518970426692772}
+  - component: {fileID: 4817942570603481834}
   m_Layer: 5
   m_Name: QuizInfo
   m_TagString: Untagged
@@ -530,6 +531,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -7.4999924}
   m_SizeDelta: {x: 600, y: 365}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4817942570603481834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3139949941759354424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ebfeca8b0787d4eb68f028de5abd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 2056549870382985033}
+  submitButton: {fileID: 3769263741262112138}
+  slotPrefab: {fileID: 6199163192180254839, guid: b36adafe072098e4ca10d9a0b74ad5d4, type: 3}
+  slotParent: {fileID: 8106464230295865947}
+  correctAnswer: wizad
 --- !u!1 &3633114109032016967
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +882,6 @@ GameObject:
   - component: {fileID: 3482156015563950727}
   - component: {fileID: 7830087252303833139}
   - component: {fileID: 8775959828279721147}
-  - component: {fileID: 4888043236690795220}
   m_Layer: 5
   m_Name: QuizCanvas
   m_TagString: Untagged
@@ -956,23 +973,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4888043236690795220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5021417224450508815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ebfeca8b0787d4eb68f028de5abd3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputField: {fileID: 2056549870382985033}
-  submitButton: {fileID: 3769263741262112138}
-  slotPrefab: {fileID: 6199163192180254839, guid: b36adafe072098e4ca10d9a0b74ad5d4, type: 3}
-  slotParent: {fileID: 8106464230295865947}
-  correctAnswer: wizad
 --- !u!1 &6998233767678849639
 GameObject:
   m_ObjectHideFlags: 0

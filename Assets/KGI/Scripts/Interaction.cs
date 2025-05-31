@@ -17,7 +17,9 @@ public class Interaction : MonoBehaviour
     private EquipObject curEquipObject;
     private CubeObject curCubeObject;
     private Camera cam;
+    
     private bool isItem;
+    private bool isInteraction= false;
     
     private Outline curOutline;
     
@@ -28,6 +30,8 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
+        if(isInteraction)return;
+        
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
@@ -89,13 +93,32 @@ public class Interaction : MonoBehaviour
             UnInteractInput();
         }
     }
+    //--------------------------변경사항------------------------------
+    public void LockInteraction()=>isInteraction = true;
+    public void UnlockInteraction()=>isInteraction = false;
+    
+    public void ClearInteraction()
+    {
+        curInteractable.FloatScript(false);
+        curInteractGameObject = null;
+        curInteractable = null;
+        curEquipObject = null;
+        curCubeObject = null;
+        curOutline.enabled = false;
+        isItem = false;
+    }
+    //---------------------------------------------------------------
 
     //Inspecter창에서 event와 연결
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && curInteractGameObject != null && isItem)
         {
-            curEquipObject.OnEquip();
+            if (curEquipObject != null)
+            {
+                curEquipObject.OnEquip();
+            }
+            curInteractable?.OnInteract();
             curInteractable?.FloatScript(false);
             curInteractGameObject = null;
             curInteractable = null;

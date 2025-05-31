@@ -8,6 +8,7 @@ namespace Common.Scripts.Players
         [Header("References")]
         private Rigidbody rigidbody;
         private Player player; // Player 스크립트 참조
+        private PlayerInput  playerInput;
 
         [Header("Movement")]
         private Vector2 curMovementInput;
@@ -28,6 +29,7 @@ namespace Common.Scripts.Players
         {
             rigidbody = GetComponent<Rigidbody>();
             player = GetComponent<Player>(); // Player 스크립트 가져오기
+            playerInput = GetComponent<PlayerInput>();
         }
 
         void Start()
@@ -82,6 +84,19 @@ namespace Common.Scripts.Players
             cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
             transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+        }
+
+
+        public void LockInput()
+        {
+            playerInput.enabled = false;
+            ToggleCursor(true);
+        }
+
+        public void UnlockInput()
+        {
+            playerInput.enabled = true;
+            ToggleCursor(false);
         }
 
         public void ToggleCursor(bool toggle)
