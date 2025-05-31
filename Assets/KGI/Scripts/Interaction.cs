@@ -19,6 +19,8 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     private bool isItem;
     
+    private Outline curOutline;
+    
     private void Start()
     {
         cam = Camera.main;
@@ -41,13 +43,22 @@ public class Interaction : MonoBehaviour
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>(); 
                     curEquipObject = hit.collider.GetComponent<EquipObject>();
+                    curOutline=hit.collider.GetComponent<Outline>();
+                    
                     curInteractable?.FloatScript(true); 
+                    
+                }
+
+                if (curOutline != null)
+                {
+                    curOutline.enabled = true;
                 }
 
                 if (hit.collider.gameObject.CompareTag("Item"))
                     isItem = true;
                 
                 curCubeObject = hit.collider.GetComponent<CubeObject>();
+                
                 if (curCubeObject != null)
                     curCubeObject.isRayOn = true;
 
@@ -58,8 +69,20 @@ public class Interaction : MonoBehaviour
                 {
                     curInteractable.FloatScript(false);
                 }
+
+                if (curCubeObject != null)
+                {
+                    curCubeObject.isRayOn = false;
+                }
+
+                curCubeObject = null;
                 curInteractGameObject = null;
                 curInteractable = null;
+                if (curOutline != null)
+                {
+                    curOutline.enabled = false;
+                }
+
                 isItem = false;
             }
             

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,10 +25,9 @@ public class ScreenUI : MonoBehaviour
     
     private void Start()
     {
-        curTemperature = 35;
-        
+        curTemperature = 30;
     }
-
+    
     private void Update()
     {
         //화면 켜졌는지 여부 검사하기
@@ -50,7 +50,7 @@ public class ScreenUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S) && isActiveScreen)
         {
-            MoveSelector(1);
+            MoveSelector(+1);
         }
         
         //옵션 선택하기
@@ -58,8 +58,6 @@ public class ScreenUI : MonoBehaviour
         {
             Optionselect(currentIndex);
         }
-        
-        
     }
     
     //시간에 따라 방 온도를 바꾸는 메서드
@@ -67,6 +65,12 @@ public class ScreenUI : MonoBehaviour
     {
         curTemperature -= Time.deltaTime * temperatureScale;
         curTemTxt.text = $"{(int)curTemperature}도";
+        
+        if (curTemperature < -60)
+        {
+            Debug.Log("죽었다!");
+            //게임 오버 코드 불러오기
+        }
     }
 
     //시간 올리는 메서드
@@ -81,14 +85,11 @@ public class ScreenUI : MonoBehaviour
     //selectBox의 위치 조정
     private void MoveSelector(int direction)
     {
-        int count = optionText.Length;
-        currentIndex = (currentIndex + direction + count) % count;
-        UpdateSelectorPosition();
-    }
-    
-    //selectbox의 실제 위치값 변경
-    private void UpdateSelectorPosition()
-    {
+        //간격 구하기
+        // float stepY = Mathf.Abs(optionText[1].anchoredPosition.y - optionText[0].anchoredPosition.y);
+        // selector.anchoredPosition += new Vector2(0, -stepY * direction);
+        
+        currentIndex = Mathf.Clamp(currentIndex + direction, 0, optionText.Length -1);
         selector.anchoredPosition = optionText[currentIndex].anchoredPosition;
     }
 
@@ -99,6 +100,8 @@ public class ScreenUI : MonoBehaviour
         {
             case 0:
                 //스크린을 초기화하는 클래스 따로 만들기
+                //스크린 초기화 -> 다음 스크린으로 넘어가는 클래스
+                //스크린별 순서 관리하는 클래스
                 break;
             case 1:
                 break;
@@ -108,5 +111,4 @@ public class ScreenUI : MonoBehaviour
                 break;
         }
     }
-    
 }

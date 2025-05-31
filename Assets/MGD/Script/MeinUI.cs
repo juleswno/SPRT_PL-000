@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MeinUI : MonoBehaviour
 {
-    //E È°¼ºÈ­ ºñÈ°¼ºÈ­
-    //°ÔÀÓ Á¤Áö
-    //¼³Á¤Ã¢
-    //³ª°¡±â > title È­¸éÀ¸·Î ÀÌµ¿
+    //E í™œì„±í™” ë¹„í™œì„±í™”
+    //ê²Œì„ ì •ì§€
+    //ì„¤ì •ì°½
+    //ë‚˜ê°€ê¸° > title í™”ë©´ìœ¼ë¡œ ì´ë™
     [SerializeField]
     private GameObject MainPannel;
     [SerializeField]
@@ -25,14 +25,14 @@ public class MeinUI : MonoBehaviour
 
     private void MainUIOpen()
     {
-        //È°¼ºÈ­ , ºñÈ°¼ºÈ­
+        //í™œì„±í™” , ë¹„í™œì„±í™”
         IsMainOpen = !IsMainOpen;
         MainPannel.SetActive(IsMainOpen);
 
         if(IsMainOpen)
-            Time.timeScale = 0; //°ÔÀÓ Á¤Áö
+            Time.timeScale = 0; //ê²Œì„ ì •ì§€
         else
-            Time.timeScale = 1; //°ÔÀÓ ½ÃÀÛ
+            Time.timeScale = 1; //ê²Œì„ ì‹œì‘
     }
 
     public void TitleMove()
