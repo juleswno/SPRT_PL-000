@@ -7,6 +7,8 @@ using UnityEngine;
 public class ScreenUI : MonoBehaviour
 {
     //변수
+    public InitScreen initScreen;
+    public CubeObject cubeObject;
     public TextMeshProUGUI curTemTxt;
     public TextMeshProUGUI curTimeTxt;
     
@@ -22,6 +24,7 @@ public class ScreenUI : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isActiveScreen;
+    private int curdirectionIndex;
     
     private void Start()
     {
@@ -57,6 +60,13 @@ public class ScreenUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isActiveScreen)
         {
             Optionselect(currentIndex);
+        }
+        
+        //종료하기
+        if (Input.GetKeyDown(KeyCode.Escape) && isActiveScreen)
+        {
+            cubeObject.OffScreen();
+            initScreen.InitDiscription(curdirectionIndex);
         }
     }
     
@@ -99,15 +109,14 @@ public class ScreenUI : MonoBehaviour
         switch (index)
         {
             case 0:
-                //스크린을 초기화하는 클래스 따로 만들기
-                //스크린 초기화 -> 다음 스크린으로 넘어가는 클래스
-                //스크린별 순서 관리하는 클래스
+                initScreen.SelectDiscription(1);
+                curdirectionIndex = 1;
                 break;
             case 1:
+                initScreen.SelectDiscription(4);
+                curdirectionIndex = 4;
                 break;
             case 2:
-                break;
-            case 3:
                 break;
         }
     }
