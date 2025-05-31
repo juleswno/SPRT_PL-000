@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -11,13 +12,22 @@ public class IceCube : MonoBehaviour
     [SerializeField] private float curIceMelt;
 
     [SerializeField] private GameObject key;
+    [SerializeField] private GameObject iceCube;
     [SerializeField] private TextMeshProUGUI script;
+    [SerializeField] private Interaction interaction;
+    
     private EquipObject equipObject;
     
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        equipObject = GetComponent<EquipObject>();
+    }
+
     void Start()
     {
         curIceMelt = maxIceMelt;
-        equipObject = GetComponent<EquipObject>();
     }
     
     void Update()
@@ -30,7 +40,7 @@ public class IceCube : MonoBehaviour
     private void MeltIce()
     {
         //if 얼음을 손에 들었을 때
-        if (equipObject.isEquip)
+        if (interaction.isEquip)
         {
             script.gameObject.SetActive(true); //문질러 녹이기 라는 스크립트가 뜸
             
@@ -51,9 +61,8 @@ public class IceCube : MonoBehaviour
     {
         if (curIceMelt <= 0)
         {
-            //계속해서 key가 생성되는 오류가 있음
-            //key를 생성하지 않고 그냥 떨어트리는 방법도 OK
-            Instantiate(key, transform.position, transform.rotation);
+            Destroy(iceCube.gameObject);
+            //key를 꺼놨다가 setActive를 하기 bb
         }
     }
 }

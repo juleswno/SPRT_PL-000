@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,14 +13,17 @@ public class Interaction : MonoBehaviour
     public LayerMask layerMask;
     
     public GameObject curInteractGameObject;
+    public GameObject curEquipGameObject;
     public IInteractable curInteractable;
 
+    private EquipObject equipObject;
     private EquipObject curEquipObject;
-    private CubeObject curCubeObject;
+    private CubeObject cubeObject;
     private Camera cam;
     
     private bool isItem;
     private bool isInteraction= true;
+    public bool isEquip;
     
     private Outline curOutline;
     
@@ -47,7 +51,7 @@ public class Interaction : MonoBehaviour
                 {
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>(); 
-                    curEquipObject = hit.collider.GetComponent<EquipObject>();
+                    equipObject = hit.collider.GetComponent<EquipObject>();
                     curOutline=hit.collider.GetComponent<Outline>();
                     
                     curInteractable?.FloatScript(true); 
@@ -62,10 +66,10 @@ public class Interaction : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Item"))
                     isItem = true;
                 
-                curCubeObject = hit.collider.GetComponent<CubeObject>();
+                cubeObject = hit.collider.GetComponent<CubeObject>();
                 
-                if (curCubeObject != null)
-                    curCubeObject.isRayOn = true;
+                if (cubeObject != null)
+                    cubeObject.isRayOn = true;
 
             }
             else
@@ -75,12 +79,12 @@ public class Interaction : MonoBehaviour
                     curInteractable.FloatScript(false);
                 }
 
-                if (curCubeObject != null)
+                if (cubeObject != null)
                 {
-                    curCubeObject.isRayOn = false;
+                    cubeObject.isRayOn = false;
                 }
 
-                curCubeObject = null;
+                cubeObject = null;
                 curInteractGameObject = null;
                 curInteractable = null;
                 if (curOutline != null)
@@ -103,8 +107,8 @@ public class Interaction : MonoBehaviour
         curInteractable.FloatScript(false);
         curInteractGameObject = null;
         curInteractable = null;
-        curEquipObject = null;
-        curCubeObject = null;
+        equipObject = null;
+        cubeObject = null;
         curOutline.enabled = false;
         isItem = false;
     }
@@ -115,9 +119,12 @@ public class Interaction : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && curInteractGameObject != null && isItem)
         {
-            if (curEquipObject != null)
+            if (equipObject != null)
             {
+                curEquipObject = equipObject;
                 curEquipObject.OnEquip();
+                isEquip = true;
+                curEquipGameObject = curInteractGameObject;
             }
             curInteractable?.OnInteract();
             curInteractable?.FloatScript(false);
@@ -129,9 +136,11 @@ public class Interaction : MonoBehaviour
     //작동이 잘 되는지 확인 후 InputSystem으로 옮기기
     public void UnInteractInput()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && curEquipObject != null)
+        if (Input.GetKeyDown(KeyCode.Q) && isEquip)
         {
             curEquipObject.OnUnequip();
+            isEquip = false;
+            curEquipGameObject = null;
         }
     }
 }
