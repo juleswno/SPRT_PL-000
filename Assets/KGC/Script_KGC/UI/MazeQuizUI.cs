@@ -51,6 +51,7 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
     private void Start()
     {
         CreateSlot();
+        cutsceneLookTarget= GameObject.Find("ExitTargetWall");
         submitButton.onClick.AddListener(CheckAnswer);
     }
 
@@ -125,15 +126,19 @@ public class MazeQuizUI : MonoBehaviour, IPuzzleUI
         
         Vector3 startPos = cam.position;
         Quaternion startRot = cam.rotation;
-
-        cutsceneLookTarget= GameObject.Find("ExitTargetWall");
         
         Vector3 targetPos = cutsceneLookTarget.transform.position + Vector3.up * 10f;
         Quaternion targetRot = Quaternion.LookRotation(cutsceneLookTarget.transform.position - targetPos);
         
-        yield return StartCoroutine(MoveCameraToTarget(cam,targetPos,targetRot, cutsceneMoveDuration));
+        yield return StartCoroutine(MoveCameraToTarget(cam, targetPos, targetRot, cutsceneMoveDuration));
+        
+        Animator anim = cutsceneLookTarget.GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Open");
+        }
         yield return new WaitForSeconds(cutsceneWaitDuration);
-        yield return StartCoroutine(MoveCameraToTarget(cam,startPos,startRot, cutsceneMoveDuration));
+        yield return StartCoroutine(MoveCameraToTarget(cam, startPos, startRot, cutsceneMoveDuration));
         
         var player = FindObjectOfType<PlayerController>();
         var interaction = FindObjectOfType<Interaction>();
