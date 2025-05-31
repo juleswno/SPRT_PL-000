@@ -12,6 +12,7 @@ public interface IInteractable
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     public TextMeshProUGUI discription;
+    public GameObject puzzleUIPanel;
 
     //스크립트 ui를 켜는 메서드
     public void FloatScript(bool istrue)
@@ -21,6 +22,18 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        
+        if (puzzleUIPanel != null)
+        {
+            var puzzleUI= puzzleUIPanel.GetComponent<IPuzzleUI>();
+            if (puzzleUI != null)
+            {
+                puzzleUI.UIOpen();
+            }
+            else
+            {
+                Debug.Log("not found puzzleUIPanel");
+            }
+            
+        }
     }
 }
