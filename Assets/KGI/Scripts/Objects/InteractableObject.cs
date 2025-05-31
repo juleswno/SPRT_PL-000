@@ -6,6 +6,7 @@ using TMPro;
 public interface IInteractable
 {
     public void FloatScript(bool istrue);
+    public void OnInteract();
 }
 
 public class InteractableObject : MonoBehaviour, IInteractable
@@ -16,5 +17,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void FloatScript(bool istrue)
     {
         discription.gameObject.SetActive(istrue);
+    }
+
+    public void OnInteract()
+    {
+        
     }
 }
