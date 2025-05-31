@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Common.Scripts.Player
+namespace Common.Scripts.Players
 {
     public class PlayerController : MonoBehaviour
     {
@@ -88,6 +88,12 @@ namespace Common.Scripts.Player
         {
             Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
             canLook = !toggle;
+        }
+
+        [ContextMenu("Toggle_Mouse_Lock")]
+        public void CursorToggle()
+        {
+            ToggleCursor(true);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class ScreenUI : MonoBehaviour
 {
     //변수
+    public InitScreen initScreen;
+    public CubeObject cubeObject;
     public TextMeshProUGUI curTemTxt;
     public TextMeshProUGUI curTimeTxt;
     
@@ -21,18 +24,25 @@ public class ScreenUI : MonoBehaviour
 
     private int currentIndex = 0;
     private bool isActiveScreen;
+    private int curdirectionIndex;
     
     private void Start()
     {
-        curTemperature = 35;
+        curTemperature = 30;
+    }
+    
+    private void Update()
+    {
+        //화면 켜졌는지 여부 검사하기
         if (this.gameObject.activeSelf)
         {
             isActiveScreen = true;
         }
-    }
-
-    private void Update()
-    {
+        else
+        {
+            isActiveScreen = false;
+        }
+        
         ChangeTemperatureText();
         ChangeTimeText();
         
@@ -43,13 +53,20 @@ public class ScreenUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S) && isActiveScreen)
         {
-            MoveSelector(1);
+            MoveSelector(+1);
         }
         
         //옵션 선택하기
         if (Input.GetKeyDown(KeyCode.E) && isActiveScreen)
         {
             Optionselect(currentIndex);
+        }
+        
+        //종료하기
+        if (Input.GetKeyDown(KeyCode.Escape) && isActiveScreen)
+        {
+            cubeObject.OffScreen();
+            initScreen.InitDiscription(curdirectionIndex);
         }
     }
     
@@ -58,6 +75,12 @@ public class ScreenUI : MonoBehaviour
     {
         curTemperature -= Time.deltaTime * temperatureScale;
         curTemTxt.text = $"{(int)curTemperature}도";
+        
+        if (curTemperature < -60)
+        {
+            Debug.Log("죽었다!");
+            //게임 오버 코드 불러오기
+        }
     }
 
     //시간 올리는 메서드
@@ -69,15 +92,14 @@ public class ScreenUI : MonoBehaviour
         curTimeTxt.text = $"{minutes:00}:{seconds:00}";
     }
 
+    //selectBox의 위치 조정
     private void MoveSelector(int direction)
     {
-        int count = optionText.Length;
-        currentIndex = (currentIndex + direction + count) % count;
-        UpdateSelectorPosition();
-    }
-    
-    private void UpdateSelectorPosition()
-    {
+        //간격 구하기
+        // float stepY = Mathf.Abs(optionText[1].anchoredPosition.y - optionText[0].anchoredPosition.y);
+        // selector.anchoredPosition += new Vector2(0, -stepY * direction);
+        
+        currentIndex = Mathf.Clamp(currentIndex + direction, 0, optionText.Length -1);
         selector.anchoredPosition = optionText[currentIndex].anchoredPosition;
     }
 
@@ -87,15 +109,15 @@ public class ScreenUI : MonoBehaviour
         switch (index)
         {
             case 0:
-                //스크린을 초기화하는 클래스 따로 만들기
+                initScreen.SelectDiscription(1);
+                curdirectionIndex = 1;
                 break;
             case 1:
+                initScreen.SelectDiscription(4);
+                curdirectionIndex = 4;
                 break;
             case 2:
                 break;
-            case 3:
-                break;
         }
     }
-    
 }

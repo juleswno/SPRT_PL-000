@@ -127,9 +127,9 @@ MonoBehaviour:
   patrolRange: 10
   patrolWaitTime: 3
   patrolAudioSource: {fileID: 3930196038053887111}
-  maxSoundDistance: 10
+  maxSoundDistance: 15
   minVolume: 0
-  maxVolume: 1
+  maxVolume: 0.7
 --- !u!195 &5816807835224490208
 NavMeshAgent:
   m_ObjectHideFlags: 0
