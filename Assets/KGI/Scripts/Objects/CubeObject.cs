@@ -29,7 +29,7 @@ public class CubeObject : MonoBehaviour
         }
     }
 
-    private void OffScreen()
+    public void OffScreen()
     {
         screen.SetActive(false);
         
